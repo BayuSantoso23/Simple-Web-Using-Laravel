@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-const defaultTheme = require('tailwindcss/defaultTheme')
+import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
     content: [
@@ -8,9 +8,11 @@ export default {
       "./resources/**/*.vue",
     ],
     theme: {
-      extend: {fontFamily: {
-        sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
-      },},
+      extend: {
+        fontFamily: {
+          sans: ['InterVariable', ...defaultTheme.fontFamily.sans],
+        },
+      },
     },
     plugins: [],
-  }
+};
