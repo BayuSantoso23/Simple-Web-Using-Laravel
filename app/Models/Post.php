@@ -1,41 +1,20 @@
-<?php 
+<?php
 
 namespace App\Models;
 
-use Illuminate\Support\Arr;
-use PhpParser\Node\Expr\StaticCall;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Post{
-    public static function all(){
-        return [
-            [
-                'id' => 1,
-                'slug' => 'Article-1-Title',
-                'title' => 'Article 1',
-                'author' => 'Iwan Sihombing',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-                maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-                sint pariatur quia est vel!'
-            ],
-            [
-                'id' => 2,
-                'slug' => 'Article-2-Title',
-                'title' => 'Article 2',
-                'author' => 'Bayu Santoso',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-                maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-                sint pariatur quia est vel!'
-            ]
-        ];
-    }
+// Model parent class will automatically connect Post to posts table
+class Post extends Model{
+    // If the database name is different with the model name, we can specify it here
+    // protected $table = 'table name'
 
-    public static function find($slug): array {
-        $post =  Arr::first(static::all(), fn ($post) => $post['slug'] == $slug);
+    // If the primary key is not id you can specify it here
+    // protected $primaryKey = 'Your Primary Key'
 
-        if(!$post){
-            abort(404);
-        }
+    use HasFactory;
+    protected $fillable = ['title', 'author', 'slug', 'body'];
 
-        return $post;
-    }
 }
+
