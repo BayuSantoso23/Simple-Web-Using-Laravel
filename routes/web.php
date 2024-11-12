@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Route;
 
@@ -10,60 +11,16 @@ Route::get('/', function () {
 
 // Blog (Article)
 Route::get('/posts', function () {
-    return view('posts', ['title' => 'Blog Page', 'posts' => [
-        [
-            'id' => 1,
-            'slug' => 'Article-1-Title',
-            'title' => 'Article 1',
-            'author' => 'Iwan Sihombing',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-            maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-            sint pariatur quia est vel!'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'Article-2-Title',
-            'title' => 'Article 2',
-            'author' => 'Bayu Santoso',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-            maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-            sint pariatur quia est vel!'
-        ]
-    ]]);
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::all() ]);
 });
 
 // {id} is a wildcard variable
 Route::get('/posts/{slug}', function($slug){
-    $posts = [
-        [
-            'id' => 1,
-            'slug' => 'Article-1-Title',
-            'title' => 'Article 1',
-            'author' => 'Iwan Sihombing',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-            maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-            sint pariatur quia est vel!'
-        ],
-        [
-            'id' => 2,
-            'slug' => 'Article-2-Title',
-            'title' => 'Article 2',
-            'author' => 'Bayu Santoso',
-            'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus aperiam perferendis, 
-            maiores facilis nostrum earum ad odio molestiae incidunt, aut rem ipsum saepe dicta magnam, 
-            sint pariatur quia est vel!'
-        ]
-    ];
 
-    $post = Arr::first($posts, function ($post) use ($slug){
-        return $post['slug'] == $slug;
-    });
+    $post = Post::find($slug);
 
     return view('post', ['title' => 'Single Post', 'post' => $post]);
 });
-
-
-
 
 // Contact
 Route::get('/contact', function () {
