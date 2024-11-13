@@ -27,6 +27,17 @@ class UserFactory extends Factory
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
+            // True or False operator in PHP
+
+            // Ternary Operator
+            // Var1 = $Statement1 ? $Statement1 : $Statement2 (If, statement 1 is true than change it into statement 1, 
+            // if it false change it into statement 2)
+
+            // Elvis Operator
+            // $Var2 = $Statement3 ?: $Stament4 (Simplified Version from above)
+
+            // Null Coalescing Operator
+            // $Statement5 ??= $Statement6 (More Simplified)
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
         ];
@@ -39,6 +50,12 @@ class UserFactory extends Factory
     {
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
+        ]);
+    }
+    public function admin(): static
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_admin' => true,
         ]);
     }
 }

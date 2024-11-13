@@ -7,7 +7,8 @@
     <article class="py-4 max-w-screen-md ">
         <h3 class="my-2 text-3xl tracking-tight font-bold text-gray-900">{{ $post['title'] }}</h3>
         <div class="text-base text-gray-500">
-            <a href="#" >{{ $post['author'] }}</a> | {{ $post->created_at->diffForHumans() }}
+            <a href="/authors/{{ $post->author->id }}" class="hover:underline" >
+                {{ $post->author->name }}</a> | {{ $post->created_at->diffForHumans() }}
         </div>
         <p class="my-4 font-light">{{ $post['body'] }}</p>
         <div class="flex justify-end">
