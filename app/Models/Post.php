@@ -14,6 +14,8 @@ class Post extends Model{
     // If the primary key is not id you can specify it here
     // protected $primaryKey = 'Your Primary Key'
 
+    protected $with = ['author', 'category'];
+
     use HasFactory;
     protected $fillable = ['title', 'author', 'slug', 'body'];
 
