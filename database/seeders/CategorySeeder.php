@@ -17,29 +17,27 @@ class CategorySeeder extends Seeder
 
         Category::create([
             'name' => 'Category 1',
-            'slug' => 'category-1'
+            'slug' => 'category-1',
+            'color' => 'red'
         ]);
 
         Category::create([
             'name' => 'Category 2',
-            'slug' => 'category-2'
+            'slug' => 'category-2',
+            'color' => 'green'
         ]);
 
         Category::create([
             'name' => 'Category 3',
-            'slug' => 'category-3'
+            'slug' => 'category-3',
+            'color' => 'blue'
         ]);
 
         Category::create([
             'name' => 'Category 4',
-            'slug' => 'category-4'
+            'slug' => 'category-4',
+            'color' => 'yellow'
         ]);
 
-        Category::create([
-            'name' => 'Category 5',
-            'slug' => 'category-5'
-        ]);
-    }
-
-    
+    }    
 }
