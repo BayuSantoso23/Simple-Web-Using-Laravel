@@ -13,9 +13,9 @@ Route::get('/', function () {
 
 // Blog (Article)
 Route::get('/posts', function () {
-    // $posts =Post::with(['author', 'category'])->get();
-    $posts = Post::all();
-    return view('posts', ['title' => 'Blog Page', 'posts' => $posts ]);
+    // $posts = Post::with(['author', 'category'])->get();
+
+    return view('posts', ['title' => 'Blog Page', 'posts' => Post::filter(request(['search', 'category', 'author']))->latest()->paginate(9)->withQueryString() ]);
 });
 
 // Finding the post using slug 

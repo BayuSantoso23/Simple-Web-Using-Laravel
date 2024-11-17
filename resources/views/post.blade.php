@@ -42,7 +42,7 @@ URL: https://flowbite.com/docs/components/typography/
                         <div>
                             
                             {{-- Author Name --}}
-                            <a href="/authors/{{ $post->author->username }}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
+                            <a href="/posts?author={{ $post->author->username }}" rel="author" class="text-xl font-bold text-gray-900 dark:text-white">{{ $post->author->name }}</a>
                             
                             {{-- Timestamps --}}
                             <p class="text-base text-gray-500 dark:text-gray-400 ml-1">{{ $post->created_at->diffForHumans() }}</p>
@@ -50,7 +50,7 @@ URL: https://flowbite.com/docs/components/typography/
                             <div class="flex justify-between items-center mb-5 text-gray-500">
                 
                             {{-- Category --}}
-                            <a href="/categories/{{ $post->category->slug }}">
+                            <a href="/posts?category={{ $post->category->slug }}">
             
                                 {{-- Category Name --}}
                                 <span class="bg-{{ $post->category->color }}-100 text-gray-600 text-xs font-medium inline-flex 

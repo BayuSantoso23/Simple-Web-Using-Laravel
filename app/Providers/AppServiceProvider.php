@@ -21,5 +21,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::preventLazyLoading();
+
+        // If you want to use other version of default pagination
+        // Paginator::useBootstrapFive();
     }
 }
