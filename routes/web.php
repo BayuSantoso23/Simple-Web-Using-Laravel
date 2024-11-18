@@ -37,8 +37,8 @@ Route::get('/categories/{category:slug}', function(Category $category){
 });
 
 // Contact
-Route::get('/contact', function () {
-    return view('contact',['title' => 'Contact Page']);
+Route::get('/contact', function (User $user) {
+    return view('contact',['title' => 'Contact Page', 'users' => User::all()]);
 });
 
 // About
